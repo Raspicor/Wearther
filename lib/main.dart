@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:wearther/View/LoadingPage/TestNextPage.dart';
 
 import 'View/LoadingPage/LoadingPage.dart';
 
@@ -25,7 +26,10 @@ class WeartherApp extends StatelessWidget {
           initialRoute: "/Load",
           routingCallback: (route) {},
           getPages: [
-            GetPage(name: "/Load", page: () => LoadingPage()),
+            GetPage(name: "/Load", page: () => LoadingPage(), transition: Transition.fadeIn),
+
+            //테스트 페이지
+            GetPage(name: "/TestNextPage", page: () => TestNextPage(), transition: Transition.fadeIn)
           ],
         );
       }
