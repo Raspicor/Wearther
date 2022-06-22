@@ -12,7 +12,6 @@ $conn = new mysqli($mysql_hostname,$mysql_username,$mysql_password,$mysql_databa
 if ($conn->connect_errno){
     echo '연결실패 : '.$conn->connect_error.'';
 }else{
-    echo '연결 성공';
-}
 echo 'hello world';
+}
 ?>
