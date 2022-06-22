@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wearther">
+    package="com.example.wearther"><uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="wearther"
         android:name="${applicationName}"
