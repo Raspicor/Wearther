@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wearther/View/LoadingPage/TestNextPage.dart';
+import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 
 import 'View/LoadingPage/LoadingPage.dart';
 
 void main() {
+  KakaoSdk.init(nativeAppKey: 'c1515cde45f1bb8f3192b8fd1c3bebb9');
   runApp(const WeartherApp());
 }
 
