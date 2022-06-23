@@ -132,5 +132,33 @@
             }
             return false;
         }
+        // single member login
+        public function getSingleMemberLogin(){
+            $sqlQuery = "SELECT
+                        member_id,
+                        member_gender,
+                        member_favorite_style,
+                        member_nickname,
+                        member_password,
+                        location_name
+                      FROM
+                        ". $this->db_table ."
+                    WHERE
+                       member_id = ? and member_password = ?
+                    LIMIT 0,1";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $this->member_id);
+	    $stmt->bindParam(2, $this->member_password);
+            $stmt->execute();
+            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->member_id = $dataRow['member_id'];
+            $this->member_gender = $dataRow['member_gender'];
+            $this->member_favorite_style = $dataRow['member_favorite_style'];
+            $this->member_nickname = $dataRow['member_nickname'];
+            $this->member_password = $dataRow['member_password'];
+            $this->location_name = $dataRow['location_name'];
+        }
+
     }
 ?>
