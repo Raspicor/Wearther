@@ -65,6 +65,17 @@
  	    $stmt->execute();
             return $stmt;
         }  
+        public function getShoeClothes(){
+            $sqlQuery = "SELECT clothes_name, clothes_type, clothes_situation, clothes_style, clothes_best_weather, clothes_best_temp,clothes_gender,clothes_detailtype FROM " . $this->db_table . " where clothes_type = '신발' and clothes_style = ? and clothes_gender = ?";
+
+
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $this->clothes_style);
+            $stmt->bindParam(2, $this->clothes_gender);
+            $stmt->execute();
+            return $stmt;
+        }
+
 
     }
 ?>

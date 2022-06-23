@@ -16,35 +16,43 @@
         }
         // GET ALL
         public function getPosts(){
-            $sqlQuery = "SELECT post_id, member_id, post_date, content, location_name FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT post_id, member_id, post_date, content, location_name FROM " . $this->db_table . " where member_id = ? order by post_id desc";
             $stmt = $this->conn->prepare($sqlQuery);
+	    $stmt->bindParam(1, $this->member_id);
             $stmt->execute();
             return $stmt;
         }
-        // CREATE
+        public function getNearPosts(){
+            $sqlQuery = "SELECT post_id, member_id, post_date, content, location_name FROM " . $this->db_table . " where location_name = ? order by post_date desc";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $this->location_name);
+            $stmt->execute();
+            return $stmt;
+        }       
+ // CREATE
         public function createPost(){
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
-                        post_id = :post_id, 
+                        post_id = null, 
                         member_id = :member_id, 
-                        post_date = :post_date, 
+                        post_date = now(), 
                         content = :content,
                         location_name = :location_name";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->post_id=htmlspecialchars(strip_tags($this->post_id));
+            //$this->post_id=htmlspecialchars(strip_tags($this->post_id));
             $this->member_id=htmlspecialchars(strip_tags($this->member_id));
-            $this->post_date=htmlspecialchars(strip_tags($this->post_date));
+            //$this->post_date=htmlspecialchars(strip_tags($this->post_date));
             $this->content=htmlspecialchars(strip_tags($this->content));
             $this->location_name=htmlspecialchars(strip_tags($this->location_name));
         
             // bind data
-            $stmt->bindParam(":post_id", $this->post_id);
+            //$stmt->bindParam(":post_id", $this->post_id);
             $stmt->bindParam(":member_id", $this->member_id);
-            $stmt->bindParam(":post_date", $this->post_date);
+            //$stmt->bindParam(":post_date", $this->post_date);
             $stmt->bindParam(":content", $this->content);
             $stmt->bindParam(":location_name", $this->location_name);
         
@@ -111,7 +119,7 @@
             return false;
         }
         // DELETE
-        function deleteEmployee(){
+        function deletePost(){
             $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE post_id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
