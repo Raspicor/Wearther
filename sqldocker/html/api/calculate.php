@@ -16,11 +16,8 @@
     $condition->weather = isset($_GET['weather']) ? $_GET['weather'] : die("c");
     $condition->temp = isset($_GET['temp']) ? $_GET['temp'] : die("d");
     $condition->situation = isset($_GET['situation']) ? $_GET['situation'] : die("e");
-
-    echo json_encode($itemCount);
     if($itemCount > 0){
         $memberArr = array();
-        $memberArr["itemCount"] = $itemCount;
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
@@ -39,6 +36,9 @@
             array_push($memberArr, $e);
 		
         }
+	$col = array_column( $memberArr, "score" );
+	array_multisort( $col, SORT_DESC, $memberArr );
+	$memberArr = array_slice($memberArr,0,5);
         echo json_encode($memberArr,JSON_UNESCAPED_UNICODE);
     }
     else{
