@@ -23,7 +23,7 @@
 	public function calculate($e){
 
 	$score = 0;           
-	$score = $score + 20 - (abs)((int)(($this_temp - $e[clothes_best_temp])/3));
+	$score = $score + 20 - (abs)((int)(($this->temp - $e["clothes_best_temp"])/3));
 	$score = $score + $this->weatherarray[$this->weather][$e["clothes_best_weather"]];            
         $score = $score + $this->situationarray[$this->situation][$e["clothes_best_situation"]];
 

@@ -34,6 +34,28 @@
 		$stmt->execute();
             return $stmt;
         }
+        public function getRandomTopClothes(){
+            $sqlQuery = "SELECT clothes_name, clothes_type, clothes_situation, clothes_style, clothes_best_weather, clothes_best_temp,clothes_gender,clothes_detailtype FROM " . $this->db_table . " where clothes_type = '상의' and clothes_gender = ? order by rand() limit 3";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1,$this->clothes_gender);
+	    
+		$stmt->execute();
+            return $stmt;
+        }
+
+
+        public function getRandomBottomClothes(){
+            $sqlQuery = "SELECT clothes_name, clothes_type, clothes_situation, clothes_style, clothes_best_weather, clothes_best_temp,clothes_gender,clothes_detailtype FROM " . $this->db_table . " where clothes_type = '하의' and clothes_gender = ?  ORDER BY RAND() LIMIT 3";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1,$this->clothes_gender);
+	    
+		$stmt->execute();
+            return $stmt;
+        }
+
+
+
+
 	        // GET bottom
         public function getBottomClothes(){
             $sqlQuery = "SELECT clothes_name, clothes_type, clothes_situation, clothes_style, clothes_best_weather, clothes_best_temp,clothes_gender,clothes_detailtype FROM " . $this->db_table . " where clothes_type = '하의' and clothes_style = ? and clothes_gender = ?";
