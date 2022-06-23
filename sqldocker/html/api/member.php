@@ -22,13 +22,12 @@
             "member_password" => $item->member_password,
             "location_name" => $item->location_name
         );
-      
         http_response_code(200);
         echo json_encode($emp_arr,JSON_UNESCAPED_UNICODE);
     }
       
     else{
-        http_response_code(404);
-        echo json_encode("custom error");
+        http_response_code(404);       
+       echo json_encode("custom error");
     }
 ?>

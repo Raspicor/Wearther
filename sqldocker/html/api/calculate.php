@@ -20,7 +20,14 @@
     $condition->situation = isset($_GET['situation']) ? $_GET['situation'] : die("e");
     $stmt = $items->getTopClothes();
    $itemCount = $stmt->rowCount();
+    $stmt2 = $items->getBottomClothes();
+    $itemCount2 = $stmt2->rowCount();
+    $stmt3 = $items->getOuterClothes();
+    $itemCount3 = $stmt3->rowcount();
+    $stmt4 = $items->getAcceClothes();
+    $itemCount4 = $stmt4->rowcount();
 
+$answerArr = array();
   if($itemCount > 0){
         $memberArr = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -43,13 +50,84 @@
 	$col = array_column( $memberArr, "score" );
 	array_multisort( $col, SORT_DESC, $memberArr );
 	$memberArr = array_slice($memberArr,0,1);
-        echo json_encode($memberArr,JSON_UNESCAPED_UNICODE);
+	array_push($answerArr,$memberArr);
     }
-    else{
-        http_response_code(404);
-        echo json_encode(
-            array("message" => "No record found.")
-        );
+    
+
+  if($itemCount2 > 0){
+        $memberArr = array();
+        while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $e = array(
+                "clothes_name" => $clothes_name,
+                "clothes_type" => $clothes_type,
+                "clothes_situation" => $clothes_situation,
+                "clothes_style" => $clothes_style,
+                "clothes_best_weather" => $clothes_best_weather,
+                "clothes_best_temp" => $clothes_best_temp,
+                "clothes_gender" => $clothes_gender,
+                "clothes_detailtype" => $clothes_detailtype
+            );
+            $score = $condition->calculate($e);
+            $e["score"] = $score;
+            array_push($memberArr, $e);
+
+        }
+        $col = array_column( $memberArr, "score" );
+        array_multisort( $col, SORT_DESC, $memberArr );
+        $memberArr = array_slice($memberArr,0,1);
+	array_push($answerArr,$memberArr);
     }
+  if($itemCount3 > 0){
+        $memberArr = array();
+        while ($row = $stmt3->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $e = array(
+                "clothes_name" => $clothes_name,
+                "clothes_type" => $clothes_type,
+                "clothes_situation" => $clothes_situation,
+                "clothes_style" => $clothes_style,
+                "clothes_best_weather" => $clothes_best_weather,
+                "clothes_best_temp" => $clothes_best_temp,
+                "clothes_gender" => $clothes_gender,
+                "clothes_detailtype" => $clothes_detailtype
+            );
+            $score = $condition->calculate($e);
+            $e["score"] = $score;
+            array_push($memberArr, $e);
+
+        }
+        $col = array_column( $memberArr, "score" );
+        array_multisort( $col, SORT_DESC, $memberArr );
+        $memberArr = array_slice($memberArr,0,1);
+        array_push($answerArr,$memberArr);
+    }
+  if($itemCount4 > 0){
+        $memberArr = array();
+        while ($row = $stmt4->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $e = array(
+                "clothes_name" => $clothes_name,
+                "clothes_type" => $clothes_type,
+                "clothes_situation" => $clothes_situation,
+                "clothes_style" => $clothes_style,
+                "clothes_best_weather" => $clothes_best_weather,
+                "clothes_best_temp" => $clothes_best_temp,
+                "clothes_gender" => $clothes_gender,
+                "clothes_detailtype" => $clothes_detailtype
+            );
+            $score = $condition->calculate($e);
+            $e["score"] = $score;
+            array_push($memberArr, $e);
+
+        }
+        $col = array_column( $memberArr, "score" );
+        array_multisort( $col, SORT_DESC, $memberArr );
+        $memberArr = array_slice($memberArr,0,1);
+        array_push($answerArr,$memberArr);
+    }
+
+        echo json_encode($answerArr,JSON_UNESCAPED_UNICODE);
+
 ?>
 
