@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wearther/View/MainPage/1HomePage/HomePage.dart';
-import 'package:wearther/View/MainPage/2MapPage/MapPage.dart';
-import 'package:wearther/View/MainPage/3CommunityPage/CommunityPage.dart';
-import 'package:wearther/View/MainPage/4MyPage/MyPage.dart';
+import 'package:wearther/View/4MainPage/1HomePage/HomePage.dart';
+import 'package:wearther/View/4MainPage/2MapPage/MapPage.dart';
+import 'package:wearther/View/4MainPage/3CommunityPage/CommunityPage.dart';
+import 'package:wearther/View/4MainPage/4MyPage/MyPage.dart';
 
 import '../../ViewModel/BottomNavigationController.dart';
 

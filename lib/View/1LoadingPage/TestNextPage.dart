@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import 'package:wearther/View/MainPage/MainPage.dart';
+import 'package:wearther/View/4MainPage/MainPage.dart';
 import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 class TestNextPage extends StatelessWidget {

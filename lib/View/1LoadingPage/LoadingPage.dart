@@ -13,7 +13,7 @@ class _LoadingPageState extends State<LoadingPage> {
   bool ifStarted = false;
   final int animationDuration = 600;
 
-  //const LoadingPage({Key? key}) : super(key: key);
+  //const 1LoadingPage({Key? key}) : super(key: key);
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _LoadingPageState extends State<LoadingPage> {
       });
 
       Future.delayed(Duration(milliseconds: 1000), () {
-        Get.toNamed("/TestNextPage",);
+        Get.toNamed("/Login",);
       });
     });
   }
