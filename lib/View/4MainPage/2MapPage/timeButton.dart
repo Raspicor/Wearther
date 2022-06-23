@@ -4,8 +4,8 @@ import 'package:wearther/View/3InitialChoosePage/InitialChoosePage.dart';
 import 'package:get/get.dart';
 import 'package:wearther/ViewModel/clientController.dart';
 
-class styleChooseButton extends StatelessWidget {
-  styleChooseButton({
+class timeButton extends StatelessWidget {
+  timeButton({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class styleChooseButton extends StatelessWidget {
         child: Obx(
           () => ElevatedButton(
             onPressed: (){
-              clientController.to.style(text);
+              clientController.to.time(text);
             },
             style: ElevatedButton.styleFrom(
               elevation: ifChosen() ? 0.0 : 5.0,
@@ -29,7 +29,7 @@ class styleChooseButton extends StatelessWidget {
               ),
             ),
             child: Text(text, style: TextStyle(
-              fontSize: 25.sp,
+              fontSize: 20.sp,
               fontWeight: FontWeight.bold,
               color: ifChosen() ? Colors.white : Color(0xFF5E69C4),
             ),),
@@ -39,6 +39,6 @@ class styleChooseButton extends StatelessWidget {
   }
 
   bool ifChosen(){
-    return clientController.to.style.value.compareTo(text) == 0;
+    return clientController.to.time.value.compareTo(text) == 0;
   }
 }

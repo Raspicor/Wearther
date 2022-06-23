@@ -41,6 +41,7 @@ dependencies:
   kakaomap_webview: ^0.3.0
   webview_flutter: ^2.8.0
   fluttertoast: ^8.0.9
+  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +88,7 @@ flutter:
    - assets/IllustImage/clothings/아우터/조끼/
    - assets/IllustImage/clothings/하의/바지/
    - assets/IllustImage/clothings/하의/치마/
+   - assets/weatherImage/
 
 
 
