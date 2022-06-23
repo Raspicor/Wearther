@@ -8,7 +8,9 @@
     $database = new Database();
     $db = $database->getConnection();
     $items = new Clothes($db);
-    $stmt = $items->getClothes();
+    $items->clothes_style = $_GET['style'];
+    $items->clothes_gender = $_GET['gender'];
+    $stmt = $items->getTopClothes();
     $itemCount = $stmt->rowCount();
     $condition = new Condition($db);
     $condition->gender = isset($_GET['gender']) ? $_GET['gender'] : die("a");
@@ -27,7 +29,6 @@
                 "clothes_style" => $clothes_style,
                 "clothes_best_weather" => $clothes_best_weather,
                 "clothes_best_temp" => $clothes_best_temp,
-                "clothes_color" => $clothes_color,
                 "clothes_gender" => $clothes_gender,
                 "clothes_detailtype" => $clothes_detailtype
             );
