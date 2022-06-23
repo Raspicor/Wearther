@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+import 'package:wearther/View/MainPage/MainPage.dart';
+import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 class TestNextPage extends StatelessWidget {
   const TestNextPage({Key? key}) : super(key: key);
@@ -33,6 +35,8 @@ class TestNextPage extends StatelessWidget {
                   await UserApi.instance.loginWithKakaoAccount();
                   print('카카오계정으로 로그인 성공');
                 } catch (error) {
+//                  Get.toNamed("/Main");
+                  Get.to(MainPage(), binding: BindingsBuilder(() => Get.lazyPut<BottomNavigationController>(() => BottomNavigationController())));
                   print('카카오계정으로 로그인 실패 $error');
                 }
               }

@@ -23,7 +23,7 @@ class _LoadingPageState extends State<LoadingPage> {
       });
 
       Future.delayed(Duration(milliseconds: 1000), () {
-        Get.toNamed("/TestNextPage");
+        Get.toNamed("/TestNextPage",);
       });
     });
   }
