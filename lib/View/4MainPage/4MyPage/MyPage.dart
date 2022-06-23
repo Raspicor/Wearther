@@ -72,17 +72,16 @@ class MyPage extends StatelessWidget {
                 elevation: 0.0
             ),
             child: Row(
-                children: [
-                  Image.asset('assets/MyPageImage/withdrawal.png',),
-                  SizedBox(width: 12.w,),
-                  Text("회원탈퇴", style: TextStyle(
-                      fontSize: 24.sp,
-                      color: Colors.black
-                  ),)
-                ]
+              children: [
+                Image.asset('assets/MyPageImage/withdrawal.png',),
+                SizedBox(width: 12.w,),
+                Text("회원탈퇴", style: TextStyle(
+                    fontSize: 24.sp,
+                    color: Colors.black
+                ),)
+              ]
             ),
           ),
-
         ],
       ),
     );
