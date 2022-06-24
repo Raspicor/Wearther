@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import 'package:wearther/View/2LoginPage/signUpPage.dart';
+import 'package:http/http.dart' as http;
 
 class logInPage extends StatefulWidget {
   @override
@@ -62,30 +65,36 @@ class _logInPageState extends State<logInPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Container(
-                  child : Row(
-                    children: [
-                      Checkbox(
-                        value: _isChecked,
-                        onChanged: (value){
-                          setState((){
-                            _isChecked = value!;
-                          });
-                        },
-                      ),
-                      Text('자동 로그인'),
-                    ],  
-                  )
+                    child : Row(
+                      children: [
+                        Checkbox(
+                          value: _isChecked,
+                          onChanged: (value){
+                            setState((){
+                              _isChecked = value!;
+                            });
+                          },
+                        ),
+                        Text('자동 로그인'),
+                        // DB에 저장된 사용자 ID PW 가져와서 AutoLogin 함수 만들어서 찾자
+                      ],
+                    )
                 ),
                 CupertinoButton(
                   child: Text('Log In'),
-                  onPressed: () {
-                    if(_formkey.currentState!.validate()) {
-                      /*Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => main()),
-                      );
-                    } */ // home page넣고 주석 지우자
-                    } // 중괄호는 냅둬
+                  onPressed: () async {
+                    var id = _usernameController.text;
+                    var pw = _passwordController.text;
+                    var url = Uri.parse(
+                        'http://115.85.182.148:9001/api/member.php?member_id=${id}&member_password=${pw}');
+                    var response = await http.get(url);
+                    if(response.statusCode == 200) {
+                      flutterToast('Log In Complete!');
+                      Get.toNamed("/Main");
+                    } else {
+                      flutterToast('Log In Failed! Please retry.');
+                      return null;
+                    }
                   },
                 ),
               ],
@@ -97,7 +106,7 @@ class _logInPageState extends State<logInPage> {
                 fontWeight: FontWeight.bold,
                 color: Colors.indigoAccent,
                 decoration: TextDecoration.underline,
-            ),)),
+              ),)),
             TextButton(onPressed: () async {
               await _openSignUpPage(context);
             }, child: Text('Sign Up',
@@ -121,6 +130,7 @@ class _logInPageState extends State<logInPage> {
                     try {
                       await UserApi.instance.loginWithKakaoTalk();
                       print('카카오톡으로 로그인 성공');
+                      Get.toNamed('/Recommend');
                     } catch (error) {
                       print('카카오톡으로 로그인 실패 $error');
                       // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
@@ -132,6 +142,7 @@ class _logInPageState extends State<logInPage> {
                       try {
                         await UserApi.instance.loginWithKakaoAccount();
                         print('카카오계정으로 로그인 성공');
+                        Get.toNamed('/Recommend');
                       } catch (error) {
                         print('카카오계정으로 로그인 실패 $error');
                       }
@@ -154,7 +165,15 @@ class _logInPageState extends State<logInPage> {
     );
   }
   Future<void> _openSignUpPage(BuildContext context) async {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => signUpPage()),);
+    Get.toNamed("/SignUp");
   }
+}
+void flutterToast(String message) {
+  Fluttertoast.showToast(
+      msg: message,
+      gravity: ToastGravity.CENTER, //토스트 메시지 위치 지정
+      backgroundColor: Colors.redAccent, //토스트 메시지 배경색
+      fontSize: 20.0,
+      textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT); //토스트 메시지 지속시간
 }

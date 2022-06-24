@@ -7,6 +7,7 @@ import 'package:wearther/View/3InitialChoosePage/genderChooseButton.dart';
 import 'package:wearther/View/3InitialChoosePage/DropDownItems.dart';
 import 'package:wearther/View/4MainPage/2MapPage/situationButton.dart';
 import 'package:wearther/View/4MainPage/2MapPage/timeButton.dart';
+import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 
 class MapPage extends StatefulWidget {
@@ -91,6 +92,38 @@ class _MapPageState extends State<MapPage> {
                           switch (dropDownValue_Do) {
                             case "서울특별시":
                               return Si_menu[0];
+                            case "부산광역시":
+                              return Si_menu[1];
+                            case "대구광역시":
+                              return Si_menu[2];
+                            case "인천광역시":
+                              return Si_menu[3];
+                            case "광주광역시":
+                              return Si_menu[4];
+                            case "대전광역시":
+                              return Si_menu[5];
+                            case "울산광역시":
+                              return Si_menu[6];
+                            case "세종특별자치시":
+                              return Si_menu[7];
+                            case "경기도":
+                              return Si_menu[8];
+                            case "강원도":
+                              return Si_menu[9];
+                            case "충청북도":
+                              return Si_menu[10];
+                            case "충청남도":
+                              return Si_menu[11];
+                            case "전라북도":
+                              return Si_menu[12];
+                            case "전라남도":
+                              return Si_menu[13];
+                            case "경상북도":
+                              return Si_menu[14];
+                            case "경상남도":
+                              return Si_menu[15];
+                            case "제주특별자치도":
+                              return Si_menu[16];
                           }
                         }(),
                         onChanged: (String? newValue) {
@@ -117,7 +150,7 @@ class _MapPageState extends State<MapPage> {
                 )
             ),
 
-            Text("성별", style: TextStyle(
+            Text("활동 시간대", style: TextStyle(
                 fontSize: 20.sp,
                 color: Colors.black
             ),),
@@ -168,14 +201,15 @@ class _MapPageState extends State<MapPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            situationButton(text: "실내"),
-                            situationButton(text: "실외"),
+                            situationButton(text: "학교"),
+                            situationButton(text: "일상"),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            situationButton(text: "잦은이동"),
+                            situationButton(text: "데이트"),
+                            situationButton(text: "공적"),
                           ],
                         ),
                       ],
@@ -189,7 +223,10 @@ class _MapPageState extends State<MapPage> {
               width: context.width,
               child: ElevatedButton(
                 onPressed: (){
+                  clientController.to.location1(dropDownValue_Do);
+                  clientController.to.location2(dropDownValue_Si);
 
+                  BottomNavigationController.to.currentIndex(1);
                 },
                 child: Text("확인"),
                 style: ElevatedButton.styleFrom(

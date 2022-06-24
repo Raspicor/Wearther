@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wearther/View/3InitialChoosePage/InitialChoosePage.dart';
 import 'package:get/get.dart';
-import 'package:wearther/ViewModel/clientController.dart';
+import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 class timeButton extends StatelessWidget {
   timeButton({

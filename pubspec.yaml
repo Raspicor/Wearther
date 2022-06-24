@@ -42,6 +42,8 @@ dependencies:
   webview_flutter: ^2.8.0
   fluttertoast: ^8.0.9
   flutter_spinkit: ^5.1.0
+  http: ^0.13.4
+  json_path: ^0.4.1
 
 dev_dependencies:
   flutter_test:
@@ -72,22 +74,27 @@ flutter:
    - assets/IllustImage/body/
    - assets/IllustImage/clothings/기타/가방/
    - assets/IllustImage/clothings/기타/모자/
+   - assets/IllustImage/clothings/기타/blank/
    - assets/IllustImage/clothings/상의/나시/
    - assets/IllustImage/clothings/상의/반팔/
    - assets/IllustImage/clothings/상의/셔츠/
    - assets/IllustImage/clothings/상의/시스루/
-   - assets/IllustImage/clothings/상의/오프숄더/
+   - assets/IllustImage/clothings/상의/오픈숄더/
    - assets/IllustImage/clothings/상의/원피스/
+   - assets/IllustImage/clothings/상의/blank/
    - assets/IllustImage/clothings/신발/샌들/
    - assets/IllustImage/clothings/신발/슬리퍼/
    - assets/IllustImage/clothings/신발/운동화/
+   - assets/IllustImage/clothings/신발/blank/
    - assets/IllustImage/clothings/아우터/가디건/
-   - assets/IllustImage/clothings/아우터/명칭모름(긴거)/
-   - assets/IllustImage/clothings/아우터/명칭모름(짧은거)/
+   - assets/IllustImage/clothings/아우터/명칭 모름(긴 거)/
+   - assets/IllustImage/clothings/아우터/명칭 모름2(짧은 거)/
    - assets/IllustImage/clothings/아우터/셔츠/
    - assets/IllustImage/clothings/아우터/조끼/
+   - assets/IllustImage/clothings/아우터/blank/
    - assets/IllustImage/clothings/하의/바지/
    - assets/IllustImage/clothings/하의/치마/
+   - assets/IllustImage/clothings/하의/blank/
    - assets/weatherImage/
 
 

@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       children: [
         WeatherBlock(),
-        Illust(),
+        IllustContent(),
       ],
     );
   }

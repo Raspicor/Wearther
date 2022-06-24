@@ -19,21 +19,25 @@ class clientController extends GetxService{
   RxString gender = "".obs;
   RxString weather = "".obs;
   RxString temp = "".obs;
-  RxString location = "".obs;
-  RxString situation = "".obs;
+  RxString location1 = "".obs;
+  RxString location2 = "".obs;
+  RxString situation = "일상".obs;
   RxString time = "".obs;
 
   void changeEmail(String index){
-    style(index);
+    email(index);
   }
-  void changeLocation(String index){
-    style(index);
+  void changeLocation1(String index){
+    location1(index);
+  }
+  void changeLocation2(String index){
+    location2(index);
   }
   void changePw(String index){
-    style(index);
+    pw(index);
   }
   void changeName(String index){
-    style(index);
+    name(index);
   }
 
   void changeStyle(String index){

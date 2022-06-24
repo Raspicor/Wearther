@@ -35,7 +35,7 @@ class _ContentState extends State<Content> {
 
   void getLocation() async{
 
-    Network network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${35.88424529}&lon=${128.61523285}&appid=$apiKey&units=metric");
+    Network network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${35.88}&lon=${128.61}&appid=$apiKey&units=metric");
     var parsingDat = await network.getJson();
 
     setState(() {
@@ -99,3 +99,7 @@ class _ContentState extends State<Content> {
     );
   }
 }
+
+var locations = [
+  ["서울특별시", "관악구", "37.48", "126.93"],
+];
