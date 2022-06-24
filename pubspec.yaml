@@ -95,6 +95,15 @@ flutter:
    - assets/IllustImage/clothings/하의/바지/
    - assets/IllustImage/clothings/하의/치마/
    - assets/IllustImage/clothings/하의/blank/
+   - assets/crawledImage/여/모던/
+   - assets/crawledImage/여/스트릿/
+   - assets/crawledImage/여/캐주얼/
+   - assets/crawledImage/여/포멀/
+   - assets/crawledImage/남/모던/
+   - assets/crawledImage/남/스트릿/
+   - assets/crawledImage/남/캐주얼/
+   - assets/crawledImage/남/포멀/
+
    - assets/weatherImage/
 
 

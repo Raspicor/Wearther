@@ -51,7 +51,7 @@ class _userInfoPageState extends State<userInfoPage> {
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.only(top: 30),
-                        width: 230,
+                        width: 230.w,
                         height: 110,
                         child: TextFormField(
                           controller: _registerIdController,
@@ -72,8 +72,8 @@ class _userInfoPageState extends State<userInfoPage> {
                       ),
                       SizedBox(width: 20),
                       Container(
-                        width: 120,
-                        height: 50,
+                        width: 100.w,
+                        height: 50.h,
                         child: ElevatedButton(
                             onPressed: () async {
                               var url = Uri.parse(

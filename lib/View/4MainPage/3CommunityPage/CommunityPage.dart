@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 class CommunityPage extends StatelessWidget {
   const CommunityPage({Key? key}) : super(key: key);
@@ -18,10 +19,10 @@ class CommunityPage extends StatelessWidget {
         childAspectRatio: 1 / 1.4, //item 의 가로 1, 세로 2 의 비율
         mainAxisSpacing: 10, //수평 Padding
         crossAxisSpacing: 10, //수직 Padding
-        children: List.generate(11, (index) {  //item 의 반목문 항목 형성
+        children: List.generate(12, (index) {  //item 의 반목문 항목 형성
           return Container(
             color: Colors.lightGreen,
-            child: Text(' Item : $index'),
+            child: Image.asset('assets/crawledImage/${clientController.to.gender.value.toString()}/${clientController.to.style.value.toString()}/${index + 1}.jpg'),
           );
         }),
       ),

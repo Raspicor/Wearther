@@ -27,7 +27,7 @@ class _logInPageState extends State<logInPage> {
         child: ListView(
           padding: EdgeInsets.all(16),
           children: <Widget>[
-            SizedBox(height: 280.0),
+            SizedBox(height: 100.0),
             Column(
               children: <Widget>[
                 Image.asset('assets/LoadingImage/R.png')

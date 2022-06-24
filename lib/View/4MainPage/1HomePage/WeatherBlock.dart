@@ -4,6 +4,7 @@ import "package:flutter_spinkit/flutter_spinkit.dart";
 
 import 'package:wearther/View/4MainPage/1HomePage/network.dart';
 import 'package:wearther/View/4MainPage/1HomePage/weatherModel.dart';
+import 'package:wearther/ViewModel/BottomNavigationController.dart';
 
 
 const apiKey = "68ab3764f5c848666c9704866ef9bcbc";
@@ -34,8 +35,18 @@ class _ContentState extends State<Content> {
   Model model = Model();
 
   void getLocation() async{
+    Network network;
+    if(clientController.to.location1.value.compareTo("서울특별시") == 0){
+      network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${37.48}&lon=${126.93}&appid=$apiKey&units=metric");
+    }
+    else if(clientController.to.location1.value.compareTo("대구광역시") == 0){
+      network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${35.87}&lon=${128.61}&appid=$apiKey&units=metric");
+    }
+    else{
+      network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${35.99}&lon=${129.39}&appid=$apiKey&units=metric");
+    }
 
-    Network network = Network("https://api.openweathermap.org/data/2.5/weather?lat=${35.88}&lon=${128.61}&appid=$apiKey&units=metric");
+
     var parsingDat = await network.getJson();
 
     setState(() {
@@ -70,7 +81,7 @@ class _ContentState extends State<Content> {
       ) : Column(
         children: [
           Text("${parsingData["name"]}", style: TextStyle(
-            fontSize: 15  .sp,
+            fontSize: 15.sp,
           ),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,7 +100,7 @@ class _ContentState extends State<Content> {
               SizedBox(
                 width: 5.w,
               ),
-              Text("60%", style: TextStyle(
+              Text("70%", style: TextStyle(
                 fontSize: 30.sp,
               ),),
             ],
@@ -99,7 +110,3 @@ class _ContentState extends State<Content> {
     );
   }
 }
-
-var locations = [
-  ["서울특별시", "관악구", "37.48", "126.93"],
-];
