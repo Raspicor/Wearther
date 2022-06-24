@@ -52,7 +52,14 @@ $answerArr = array();
 	array_multisort( $col, SORT_DESC, $memberArr );
 	$memberArr = array_slice($memberArr,0,1);
 	array_push($answerArr,$memberArr);
-    }
+    }else{
+$memberArr = array();
+$e = array(
+	"clothes_name"=> "temp","clothes_detailtype" => "temp"
+);
+array_push($memberArr,$e);
+array_push($answerArr,$memberArr);
+}
     
 
   if($itemCount2 > 0){
@@ -78,7 +85,15 @@ $answerArr = array();
         array_multisort( $col, SORT_DESC, $memberArr );
         $memberArr = array_slice($memberArr,0,1);
 	array_push($answerArr,$memberArr);
-    }
+    }else{
+$memberArr = array();
+$e = array(
+        "clothes_name"=> "temp","clothes_detailtype" => "temp"
+);
+array_push($memberArr,$e);
+array_push($answerArr,$memberArr);
+}
+
   if($itemCount3 > 0){
         $memberArr = array();
         while ($row = $stmt3->fetch(PDO::FETCH_ASSOC)){
@@ -102,7 +117,15 @@ $answerArr = array();
         array_multisort( $col, SORT_DESC, $memberArr );
         $memberArr = array_slice($memberArr,0,1);
         array_push($answerArr,$memberArr);
-    }
+    }else{
+$memberArr = array();
+$e = array(
+        "clothes_name"=> "temp","clothes_detailtype" => "temp"
+);
+array_push($memberArr,$e);
+array_push($answerArr,$memberArr);
+}
+
   if($itemCount4 > 0){
         $memberArr = array();
         while ($row = $stmt4->fetch(PDO::FETCH_ASSOC)){
@@ -126,7 +149,15 @@ $answerArr = array();
         array_multisort( $col, SORT_DESC, $memberArr );
         $memberArr = array_slice($memberArr,0,1);
         array_push($answerArr,$memberArr);
-    }
+    }else{
+$memberArr = array();
+$e = array(
+        "clothes_name"=> "temp","clothes_detailtype" => "temp"
+);
+array_push($memberArr,$e);
+array_push($answerArr,$memberArr);
+}
+
   if($itemCount5 > 0){
         $memberArr = array();
         while ($row = $stmt5->fetch(PDO::FETCH_ASSOC)){
@@ -150,7 +181,15 @@ $answerArr = array();
         array_multisort( $col, SORT_DESC, $memberArr );
         $memberArr = array_slice($memberArr,0,1);
         array_push($answerArr,$memberArr);
-    }
+    }else{
+$memberArr = array();
+$e = array(
+        "clothes_name"=> "temp","clothes_detailtype" => "temp"
+);
+array_push($memberArr,$e);
+array_push($answerArr,$memberArr);
+}
+
 
         echo json_encode($answerArr,JSON_UNESCAPED_UNICODE);
 
